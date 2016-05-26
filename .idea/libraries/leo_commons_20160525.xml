@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="leo-commons-20160525">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/sample/libs/leo-commons-20160525.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
