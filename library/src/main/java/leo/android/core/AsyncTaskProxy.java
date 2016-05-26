@@ -28,15 +28,16 @@ public class AsyncTaskProxy<T> implements MethodAsyncTaskListener {
 						asyncTaskMap = new HashMap<String, MethodAsyncTask>();
 					}
 					AsyncCallback<Object, Object> callback = (AsyncCallback<Object, Object>) args[args.length - 1];
-					MethodAsyncTask asyncTask = new MethodAsyncTask();
-					asyncTask.setTargetMethod(target, method, args);
-					asyncTask.setMethodAsyncTaskListener(AsyncTaskProxy.this);
-					asyncTask.setAsyncCallback(callback);
-					callback.setAsyncTask(asyncTask);
 					String key = method.getName();
 					if (asyncTaskMap.containsKey(key)) {
 						key += "-" + UUID.randomUUID().toString();
 					}
+					MethodAsyncTask asyncTask = new MethodAsyncTask();
+					asyncTask.setName(key);
+					asyncTask.setTargetMethod(target, method, args);
+					asyncTask.setMethodAsyncTaskListener(AsyncTaskProxy.this);
+					asyncTask.setAsyncCallback(callback);
+					callback.setAsyncTask(asyncTask);
 					asyncTaskMap.put(key, asyncTask);
 					asyncTask.execute();
 					return asyncTask;

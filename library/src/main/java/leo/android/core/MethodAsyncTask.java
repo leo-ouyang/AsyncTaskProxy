@@ -5,7 +5,8 @@ import java.lang.reflect.Method;
 import android.os.AsyncTask;
 
 public class MethodAsyncTask extends AsyncTask<Object, Object, Object> {
-	
+
+	private String name;
 	private AsyncCallback<Object, Object> asyncCallback;
 	private MethodAsyncTaskListener listener;
 	private boolean hasSentResult;
@@ -20,6 +21,10 @@ public class MethodAsyncTask extends AsyncTask<Object, Object, Object> {
 	
 	public static interface MethodAsyncTaskListener {
 		public void onDone(String name);
+	}
+
+	protected void setName(String name) {
+		this.name = name;
 	}
 	
 	protected void setTargetMethod(Object target, Method method, Object[] args) {
@@ -73,7 +78,7 @@ public class MethodAsyncTask extends AsyncTask<Object, Object, Object> {
 	protected void onPostExecute(Object result) {
 		bIsRunning = false;
 		if (listener != null) {
-			listener.onDone(method.getName());
+			listener.onDone(name);
 		}
 		if (asyncCallback != null && hasSentResult) {
 			hasSentResult = false;
@@ -85,7 +90,7 @@ public class MethodAsyncTask extends AsyncTask<Object, Object, Object> {
 	protected void onCancelled() {
 		bIsRunning = false;
 		if (listener != null) {
-			listener.onDone(method.getName());
+			listener.onDone(name);
 		}
 		if (asyncCallback != null) {
 			asyncCallback.onCancel();
