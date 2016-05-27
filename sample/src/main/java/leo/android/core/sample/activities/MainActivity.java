@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (mArticleListMAT != null && mArticleListMAT.isRunning()) {
             mArticleListMAT.cancel(true);
         }
-        // or use method instead, this will cancel all AsyncTasks created by mArticleDao.
-//        mArticleDao.cancelAll();
+        // or use method below instead, this will cancel all AsyncTasks created by mArticleDao.
+        // mArticleDao.cancelAll();
     }
 
     @Override

@@ -56,8 +56,8 @@ public class DetailActivity extends AppCompatActivity {
         if (mArticleTextMAT != null && mArticleTextMAT.isRunning()) {
             mArticleTextMAT.cancel(true);
         }
-        // or use method instead, this will cancel all AsyncTasks created by mArticleDao.
-//        mArticleDao.cancelAll();
+        // or use method below instead, this will cancel all AsyncTasks created by mArticleDao.
+        // mArticleDao.cancelAll();
     }
 
     private AsyncCallback callback = new AsyncCallback<Integer, String>() {

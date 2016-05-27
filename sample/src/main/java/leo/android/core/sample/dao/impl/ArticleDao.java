@@ -45,11 +45,6 @@ public class ArticleDao extends AsyncTaskProxy<IArticleDao> implements IArticleD
             callback.sendResult(Consts.ERRCODE_FAILED);
             return null;
         }
-        try {
-            FileUtil.write(Environment.getExternalStorageDirectory() + "/article_list.html", text, false);
-        } catch (Exception e) {
-            Logger.e(e);
-        }
         Logger.d("text = " + text);
         Matcher m = Matcher.init(text).match("id=\"article_list\".+?<\\!--显示分页-->").matches("<span class=\"link_title\">.+?</span>");
         String[] titles = m.clone().substring(">", "</a>", 2, 1).values();
