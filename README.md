@@ -1,8 +1,10 @@
 # AsyncTaskProxy
 Define or call an AsyncTask like to define or call a method, a class can define multiple AsyncTask methods, the AsyncTaskProxy implemented by JDK dynamic proxy.
+<br>
+If you don't like to write interface, you could use [AsyncTaskProxy2](https://github.com/leo-ouyang/AsyncTaskProxy2), which implemented by dynamically generate sub class.
 
 ## Usage
-1 Copy below three files into your projects.
+1 Copy below three files into your project.
   * AsyncCallback.java
   * AsyncTaskProxy.java
   * MethodAsyncTask.java
